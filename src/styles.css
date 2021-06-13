@@ -1,0 +1,11 @@
+.weatherApp {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 20px;
+  border: 1px solid #d0d4d6;
+  border-radius: 10px;
+}
+
+small {
+  margin: 40px auto;
+}
