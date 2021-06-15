@@ -10,6 +10,12 @@
       integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
       crossorigin="anonymous"
     />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Oswald&display=swap"
+      rel="stylesheet"
+    />
+
     <link rel="stylesheet" href="src/styles.css" />
     <title>Awesome weather app!</title>
   </head>
@@ -18,15 +24,18 @@
       <div class="weatherApp">
         <h1>Poole, GB</h1>
         <ul>
-          <li>Updated on: Sunday 16:00</li>
-          <li>Currently: Sunny</li>
+          <li class="present">Updated on: Sunday 16:00</li>
+          <li class="present current-conditions">Currently: Sunny</li>
           <div class="row">
             <div class="col-6">
-              <img
-                src="https://ssl.gstatic.com/onebox/weather/64/sunny.png"
-                alt="Sunny"
-              />
-              22ºC | ºF
+              <div class="clearfix">
+                <img
+                  src="https://ssl.gstatic.com/onebox/weather/64/sunny.png"
+                  alt="Sunny"
+                />
+                <strong> 22 </strong>
+                <span class="units"> ºC | <a href="#">ºF</a> </span>
+              </div>
             </div>
             <div class="col-6">
               <ul>
