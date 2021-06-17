@@ -1,12 +1,15 @@
 .wrapper {
-  max-width: 600px;
+  max-width: 500px;
   margin: 40px auto;
 }
 .weatherApp {
   padding: 20px;
   border: 1px solid #d0d4d6;
   border-radius: 10px;
-  margin-bottom: 15px;
+  margin: 0 auto;
+  margin-bottom: 25px;
+  margin-top: 40px;
+  max-width: 600px;
 }
 .overview {
   margin-bottom: 10px;
@@ -29,9 +32,12 @@ li {
   padding: 0;
   font-size: 16px;
   font-weight: 100;
-  line-height: 20px;
+  line-height: 2;
 }
 
 small {
-  margin: 40px auto;
+  display: block;
+  margin: 0 auto;
+  left: 100px;
+  position: fixed;
 }

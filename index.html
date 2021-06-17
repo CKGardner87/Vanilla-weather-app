@@ -22,7 +22,7 @@
   <body>
     <div class="container">
       <div class="weatherApp">
-        <h1>Poole, GB</h1>
+        <h1><span id="city">Poole</span>, <span id="country">GB</span></h1>
         <ul>
           <li class="present">Updated on: Sunday 16:00</li>
           <li class="present current-conditions">Currently: Sunny</li>
@@ -33,12 +33,16 @@
                   src="https://ssl.gstatic.com/onebox/weather/64/sunny.png"
                   alt="Sunny"
                 />
-                <strong> 22 </strong>
+                <strong id="current-temp"> 22 </strong>
                 <span class="units"> ºC | <a href="#">ºF</a> </span>
               </div>
             </div>
             <div class="col-6">
               <ul>
+                <li>
+                  High: <span id="today-high"> 23</span> | Low:
+                  <span id="today-low"> 13</span>
+                </li>
                 <li>Precipitation 0%</li>
                 <li>Humidity 50%</li>
                 <li>Wind speed 3mph</li>
