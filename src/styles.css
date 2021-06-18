@@ -12,13 +12,14 @@ body {
 }
 .weatherApp {
   padding: 20px;
-  border: 1px solid #d0d4d6;
+  border: 1px solid #bbbec0;
   border-radius: 10px;
   margin: 0 auto;
   margin-bottom: 25px;
   margin-top: 40px;
   max-width: 600px;
-  background-color: rgba(219, 215, 215, 0.397);
+  background-color: rgba(231, 226, 226, 0.678);
+  box-shadow: 10px 10px 17px 3px rgba(182, 119, 236, 0.5);
 }
 .overview {
   margin-bottom: 10px;
@@ -29,18 +30,20 @@ body {
 }
 
 .current-conditions {
-  margin-bottom: 8px;
+  margin-bottom: 12px;
 }
 
 #current-temp {
   font-size: 60px;
   line-height: 1;
+  text-shadow: rgb(167, 238, 232) 2px 0 15px;
 }
 .units {
   position: relative;
   top: -35px;
 }
 img {
+  height: 96px;
   padding: 8px;
   position: relative;
   top: -20px;
@@ -48,6 +51,7 @@ img {
 ul,
 h1 {
   padding: 5px;
+  text-shadow: rgb(167, 238, 232) 2px 0 15px;
 }
 li {
   list-style: none;
