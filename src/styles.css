@@ -42,16 +42,27 @@ body {
   position: relative;
   top: -35px;
 }
-img {
-  height: 96px;
+.condition-icon {
+  font-size: 74px;
   padding: 8px;
   position: relative;
-  top: -20px;
+}
+.sun-icon {
+  color: #f5cb0e;
+}
+.cloudy-sun-icon {
+  color: #9facaf;
+}
+
+.cloud-icon {
+  color: #eff9fc;
+}
+.rain-icon {
+  color: #3a616b;
 }
 ul,
 h1 {
   padding: 5px;
-  text-shadow: rgb(167, 238, 232) 2px 0 15px;
 }
 li {
   list-style: none;
@@ -69,6 +80,18 @@ small {
   position: fixed;
 }
 
-#conditions {
+#conditions #sunrise #sunset {
   font-size: 14px;
+}
+h1 {
+  text-shadow: rgb(45, 97, 209) 2px 0 10px;
+  color: #4e5253;
+}
+#forecast {
+  text-align: center;
+  padding-top: 16px;
+}
+
+.forecast-icon {
+  font-size: 24px;
 }
