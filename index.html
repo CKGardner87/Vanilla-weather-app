@@ -28,8 +28,8 @@
       <div class="weatherApp">
         <h1 class="city">Poole<span id="country">, GB</span></h1>
         <ul>
-          <li class="present">Updated on: Sunday 16:00</li>
-          <li class="present current-conditions">Currently: Sunny</li>
+          <li class="present" id="current-date-time" >Updated on: Sunday 16:00</li>
+          <li class="present current-conditions" id="description">Currently: Sunny</li>
           <div class="row">
             <div class="col-6">
               <div class="clearfix">
@@ -45,18 +45,20 @@
                   High: <span id="today-high"> 23</span> | Low:
                   <span id="today-low"> 13</span>
                 </li>
-                <li id="sunrise" class="additional-elements"> Sunrise: 04:52</li>
+                <li id="feels-like" class="temp-element"> Feels like: 21</li>
+               
                 
-                <li id = "humidity" class="additional-elements">Humidity: 50%</li>
+               
                
               </ul>
             </div>
             <div class="col-3 conditions">
               <ul>
-                       <li id="feels-like" class="temp-element"> Feels like: 21</li>
                        
-                <li id="sunset" class="additional-elements"> Sunset: 21:03</li>
-                 <li id = "wind-speed" class="additional-elements">Wind speed: 3mph</li>
+                <li id = "humidity" class="additional-elements">Humidity: 50%</li>
+                <li id = "wind-speed" class="additional-elements">Wind speed: 3mph</li>        
+               
+                 
               </ul>
             </div>
              </div>
