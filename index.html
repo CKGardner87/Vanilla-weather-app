@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
      <script src="https://kit.fontawesome.com/cfa7d06bd2.js" crossorigin="anonymous"></script>
+     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -24,7 +26,7 @@
   <body>
     <div class="container">
       <div class="weatherApp">
-        <h1><span id="city">Poole</span>, <span id="country">GB</span></h1>
+        <h1 class="city">Poole<span id="country">, GB</span></h1>
         <ul>
           <li class="present">Updated on: Sunday 16:00</li>
           <li class="present current-conditions">Currently: Sunny</li>
@@ -36,21 +38,25 @@
                 <span class="units"> ºC | <a href="#">ºF</a> </span>
               </div>
             </div>
-            <div class="col-3" id="conditions">
+     
+            <div class="col-3 conditions">
               <ul>
-                <li>
+                <li class="temp-element">
                   High: <span id="today-high"> 23</span> | Low:
                   <span id="today-low"> 13</span>
                 </li>
-                <li>Precipitation: 0%</li>
-                <li>Humidity: 50%</li>
-                <li>Wind speed: 3mph</li>
+                <li id="sunrise" class="additional-elements"> Sunrise: 04:52</li>
+                
+                <li id = "humidity" class="additional-elements">Humidity: 50%</li>
+               
               </ul>
             </div>
-            <div class="col-3">
+            <div class="col-3 conditions">
               <ul>
-                <li id="sunrise"> Sunrise: 04:52</li>
-                <li id="sunset"> Sunset: 21:03</li>
+                       <li id="feels-like" class="temp-element"> Feels like: 21</li>
+                       
+                <li id="sunset" class="additional-elements"> Sunset: 21:03</li>
+                 <li id = "wind-speed" class="additional-elements">Wind speed: 3mph</li>
               </ul>
             </div>
              </div>

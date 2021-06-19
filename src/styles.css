@@ -17,7 +17,8 @@ body {
   margin: 0 auto;
   margin-bottom: 25px;
   margin-top: 40px;
-  max-width: 600px;
+  width: 600px;
+
   background-color: rgba(231, 226, 226, 0.678);
   box-shadow: 10px 10px 17px 3px rgba(182, 119, 236, 0.5);
 }
@@ -80,7 +81,13 @@ small {
   position: fixed;
 }
 
-#conditions #sunrise #sunset {
+.conditions {
+  font-size: 16px;
+}
+.temp-element {
+  font-weight: bold;
+}
+.additional-elements {
   font-size: 14px;
 }
 h1 {
