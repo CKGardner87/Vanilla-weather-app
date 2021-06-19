@@ -6,6 +6,32 @@ body {
   background-size: cover;
   background-image: url("https://techcrunch.com/wp-content/uploads/2015/08/clouds.jpg?w=1390&crop=1");
 }
+
+ul,
+h1 {
+  padding: 5px;
+}
+
+h1 {
+  text-shadow: rgb(45, 97, 209) 2px 0 10px;
+  color: #4e5253;
+}
+
+li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-weight: 100;
+  line-height: 2;
+}
+
+small {
+  display: block;
+  margin: 0 auto;
+  left: 100px;
+  position: fixed;
+}
+
 .wrapper {
   max-width: 500px;
   margin: 40px auto;
@@ -18,22 +44,18 @@ body {
   margin-bottom: 25px;
   margin-top: 40px;
   width: 600px;
-
   background-color: rgba(231, 226, 226, 0.678);
   box-shadow: 10px 10px 17px 3px rgba(182, 119, 236, 0.5);
 }
 .overview {
   margin-bottom: 10px;
 }
-
 .container {
   font-family: oswald;
 }
-
 .current-conditions {
   margin-bottom: 12px;
 }
-
 #current-temp {
   font-size: 60px;
   line-height: 1;
@@ -43,6 +65,7 @@ body {
   position: relative;
   top: -35px;
 }
+
 .condition-icon {
   font-size: 74px;
   padding: 8px;
@@ -54,51 +77,24 @@ body {
 .cloudy-sun-icon {
   color: #9facaf;
 }
-
 .cloud-icon {
   color: #eff9fc;
 }
 .rain-icon {
   color: #3a616b;
 }
-ul,
-h1 {
-  padding: 5px;
-}
-li {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-
-  font-weight: 100;
-  line-height: 2;
-}
-
-small {
-  display: block;
-  margin: 0 auto;
-  left: 100px;
-  position: fixed;
-}
-
-.conditions {
+.conditions .additional-elements {
   font-size: 16px;
 }
 .temp-element {
   font-weight: bold;
 }
-.additional-elements {
-  font-size: 14px;
-}
-h1 {
-  text-shadow: rgb(45, 97, 209) 2px 0 10px;
-  color: #4e5253;
-}
-#forecast {
-  text-align: center;
-  padding-top: 16px;
-}
 
 .forecast-icon {
   font-size: 24px;
+}
+
+#forecast {
+  text-align: center;
+  padding-top: 16px;
 }
