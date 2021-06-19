@@ -34,10 +34,12 @@ let condition = document.querySelector("#description");
 let feels = document.querySelector("#feels-like");
 let minTemp = document.querySelector("#today-low");
 let maxTemp = document.querySelector("#today-high");
+let iconElement = document.querySelector("condition-icon");
 let apiKey = "9b9238de779b229d195c2b6f0ba8b479";
 let apiEndpoint = `https://api.openweathermap.org/data/2.5/`;
 let units = "Metric";
-let apiUrl = `${apiEndpoint}find?q=Poole&units=${units}&appid=${apiKey}`;
+let city = "Poole";
+let apiUrl = `${apiEndpoint}find?q=${city}&units=${units}&appid=${apiKey}`;
 console.log(apiUrl);
 
 axios.get(apiUrl).then(showTemperature);
