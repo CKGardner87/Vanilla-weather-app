@@ -26,7 +26,14 @@
   <body>
     <div class="container">
       <div class="weatherApp">
-        <h1 class="city">Poole<span id="country">, GB</span></h1>
+      <form id = "search-form">
+          <input id = "city-search" type="search" placeholder="Search for a city"/>
+          <input id = "submit-button" type= "submit" value=" 🔍  Search  " /> 
+          <button id="current-location" type = "submit"><i class="fas fa-map-marker-alt search-marker"></i>
+            </button>
+            </form>
+            
+        <h1 class="city-name">Poole, GB</h1>
         <ul>
           <li class="present" id="current-date-time" >Updated on: Sunday 16:00</li>
           <li class="present current-conditions" id="description">Currently: Sunny</li>
@@ -38,7 +45,6 @@
                 <span class="units"> ºC | <a href="#">ºF</a> </span>
               </div>
             </div>
-     
             <div class="col-3 conditions">
               <ul>
                 <li class="temp-element">
@@ -46,23 +52,15 @@
                   <span id="today-low"> 13</span>
                 </li>
                 <li id="feels-like" class="temp-element"> Feels like: 21</li>
-               
-                
-               
-               
               </ul>
             </div>
             <div class="col-3 conditions">
               <ul>
-                       
                 <li id = "humidity" class="additional-elements">Humidity: 50%</li>
-                <li id = "wind-speed" class="additional-elements">Wind speed: 3km/h</li>        
-               
-                 
+                <li id = "wind-speed" class="additional-elements">Wind speed: 3km/h</li>       
               </ul>
             </div>
              </div>
-         
         </ul>
         <div class="row" id="forecast">
           <div class="col-2" id="day-one"><i class="fas fa-sun forecast-icon sun-icon"></i><div> Monday</div> <div><strong>20</strong> | 12 </div> </div>

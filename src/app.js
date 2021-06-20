@@ -59,3 +59,45 @@ function showTemperature(response) {
   maxTemp.innerHTML = `${highTemp}`;
   minTemp.innerHTML = `${lowTemp}`;
 }
+
+function searchForCity(event) {
+  event.preventDefault();
+  let findCity = document.querySelector("#find-city");
+  let newCity = findCity.value;
+  let units = "Metric";
+  let apiUrl = `${apiEndpoint}find?q=${newCity}&units=${units}&appid=${apiKey}`;
+  axios.get(apiUrl).then(showTemperature);
+}
+
+let form = document.querySelector("form");
+form.addEventListener("submit", searchForCity);
+
+let button = document.querySelector("#current-location");
+button.addEventListener("click", findCoords);
+
+function findCoords() {
+  navigator.geolocation.getCurrentPosition(findLocation);
+}
+
+function findLocation(position) {
+  let latitude = position.coords.latitude;
+  let longitude = position.coords.longitude;
+  units = "Metric";
+  let apiAddress = `${apiEndpoint}weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=${units}`;
+  axios.get(apiAddress).then(updateLocationDetails);
+}
+
+function updateLocationDetails(response) {
+  console.log(response.data);
+  let temperature = Math.round(response.data.main.temp);
+  let feelsLike = Math.round(response.data.main.feels_like);
+  let locationName = response.data.name;
+  let country = response.data.sys.country;
+  let humidity = response.data.main.humidity;
+  let description = response.data.weather[0].main;
+  currentTemp.innerHTML = `${temperature}ºC`;
+  feels.innerHTML = `feels like ${feelsLike}ºC`;
+  humid.innerHTML = `Humidity ${humidity}%`;
+  condition.innerHTML = `${description}`;
+  cityname.innerHTML = `${locationName}, ${country}`;
+}
