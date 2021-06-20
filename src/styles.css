@@ -3,7 +3,7 @@ html {
   max-height: 100%;
 }
 body {
-  background-size: cover;
+  background-size: 135%;
   background-image: url("https://techcrunch.com/wp-content/uploads/2015/08/clouds.jpg?w=1390&crop=1");
 }
 
@@ -30,7 +30,7 @@ li {
 small {
   display: block;
   margin: 0 auto;
-  left: 100px;
+  left: 300px;
   position: fixed;
 }
 button {
