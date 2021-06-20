@@ -16,6 +16,7 @@ h1 {
   text-shadow: rgb(45, 97, 209) 2px 0 10px;
   color: #4e5253;
   font-size: 46px;
+  text-transform: capitalize;
 }
 
 li {
@@ -37,6 +38,7 @@ button {
   border-radius: 30px;
   padding: 2px 7px;
   background-color: #7dedbc;
+  border: rgba(160, 159, 159, 0.308) 1px solid;
 }
 
 .wrapper {
@@ -50,7 +52,7 @@ button {
   margin: 0 auto;
   margin-bottom: 25px;
   margin-top: 40px;
-  width: 600px;
+  width: 650px;
   background-color: rgba(231, 226, 226, 0.678);
   box-shadow: 10px 10px 17px 3px rgba(182, 119, 236, 0.5);
 }
@@ -108,9 +110,26 @@ button {
 
 #search-form {
   padding: 15px;
-  margin-left: 235px;
+  margin-left: 255px;
+}
+#city-search {
+  text-align: center;
+  margin-right: 6px;
+  background-color: rgba(125, 213, 253, 0.685);
+  border-radius: 8px;
+}
+
+#submit-button {
+  border-radius: 15px;
+  border: rgba(160, 159, 159, 0.308) 1px solid;
+  background-color: rgb(125, 213, 253);
+  font-size: 14px;
 }
 
 .search-marker {
   font-size: 18px;
+}
+
+#description {
+  text-transform: capitalize;
 }

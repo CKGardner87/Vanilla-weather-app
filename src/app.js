@@ -28,13 +28,16 @@ if (hours < 10) {
 let currentDayTime = document.querySelector("#current-date-time");
 currentDayTime.innerHTML = `Updated: ${day} ${hours}:${minutes}`;
 
+let currentCondition = document.querySelector("#description");
 let currentTemp = document.querySelector("#current-temp");
 let humid = document.querySelector("#humidity");
 let condition = document.querySelector("#description");
 let feels = document.querySelector("#feels-like");
 let minTemp = document.querySelector("#today-low");
 let maxTemp = document.querySelector("#today-high");
+let wind = document.querySelector("#wind-speed");
 let iconElement = document.querySelector("condition-icon");
+let cityname = document.querySelector("h1");
 let apiKey = "9b9238de779b229d195c2b6f0ba8b479";
 let apiEndpoint = `https://api.openweathermap.org/data/2.5/`;
 let units = "Metric";
@@ -45,32 +48,38 @@ console.log(apiUrl);
 axios.get(apiUrl).then(showTemperature);
 function showTemperature(response) {
   console.log(response.data.list[0]);
+  let locationName = response.data.list[0].name;
+  let country = response.data.list[0].sys.country;
   let temperature = Math.round(response.data.list[0].main.temp);
   let humidityLevel = response.data.list[0].main.humidity;
   let tempFeels = Math.round(response.data.list[0].main.feels_like);
-  let weatherDescrip = response.data.list[0].weather[0].main;
+  let weatherDescrip = response.data.list[0].weather[0].description;
   let highTemp = Math.round(response.data.list[0].main.temp_max);
   let lowTemp = Math.round(response.data.list[0].main.temp_min);
+  let windSpeed = Math.round(response.data.list[0].wind.speed);
 
   currentTemp.innerHTML = `${temperature}`;
   feels.innerHTML = `Feels like: ${tempFeels}`;
   humid.innerHTML = `Humidity: ${humidityLevel}%`;
-  condition.innerHTML = `Currently: ${weatherDescrip}`;
   maxTemp.innerHTML = `${highTemp}`;
   minTemp.innerHTML = `${lowTemp}`;
+  wind.innerHTML = `${windSpeed}km/h`;
+  cityname.innerHTML = `${locationName}, ${country}`;
+  currentCondition.innerHTML = `Currently: ${weatherDescrip}`;
+  console.log(cityname);
 }
+
+let form = document.querySelector("#search-form");
+form.addEventListener("submit", searchForCity);
 
 function searchForCity(event) {
   event.preventDefault();
-  let findCity = document.querySelector("#find-city");
+  let findCity = document.querySelector("#city-search");
   let newCity = findCity.value;
   let units = "Metric";
   let apiUrl = `${apiEndpoint}find?q=${newCity}&units=${units}&appid=${apiKey}`;
   axios.get(apiUrl).then(showTemperature);
 }
-
-let form = document.querySelector("form");
-form.addEventListener("submit", searchForCity);
 
 let button = document.querySelector("#current-location");
 button.addEventListener("click", findCoords);
