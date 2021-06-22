@@ -110,3 +110,12 @@ function updateLocationDetails(response) {
   condition.innerHTML = `${description}`;
   cityname.innerHTML = `${locationName}, ${country}`;
 }
+function convertToFarenheit(event) {
+  event.preventDefault();
+  let farenheitTemp = (11 * 9) / 5 + 32;
+  let tempElement = document.querySelector("#current-temp");
+  tempElement.innerHTML = Math.round(farenheitTemp);
+}
+
+let farenheitLink = document.querySelector("#farenheit-link");
+farenheitLink.addEventListener("click", convertToFarenheit);
