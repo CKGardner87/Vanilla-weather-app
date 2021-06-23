@@ -47,7 +47,6 @@ console.log(apiUrl);
 
 axios.get(apiUrl).then(showTemperature);
 function showTemperature(response) {
-  console.log(response.data.list[0]);
   let locationName = response.data.list[0].name;
   let country = response.data.list[0].sys.country;
 
@@ -103,7 +102,6 @@ function findLocation(position) {
 }
 
 function updateLocationDetails(response) {
-  console.log(response.data);
   celsiusTemperature = response.data.main.temp;
   celsiusTempMax = response.data.main.temp_max;
   celsiusTempMin = response.data.main.temp_min;
