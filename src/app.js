@@ -50,12 +50,18 @@ function showTemperature(response) {
   console.log(response.data.list[0]);
   let locationName = response.data.list[0].name;
   let country = response.data.list[0].sys.country;
-  let temperature = Math.round(response.data.list[0].main.temp);
-  let humidityLevel = response.data.list[0].main.humidity;
-  let tempFeels = Math.round(response.data.list[0].main.feels_like);
+
+  celsiusTemperature = response.data.list[0].main.temp;
+  celsiusTempMax = response.data.list[0].main.temp_max;
+  celsiusTempMin = response.data.list[0].main.temp_min;
+  celsiusFeelsLike = response.data.list[0].main.feels_like;
+
+  let temperature = Math.round(celsiusTemperature);
+  let tempFeels = Math.round(celsiusFeelsLike);
+  let highTemp = Math.round(celsiusTempMax);
+  let lowTemp = Math.round(celsiusTempMin);
+  let humidityLevel = response.data.list[0].main.humidiy;
   let weatherDescrip = response.data.list[0].weather[0].description;
-  let highTemp = Math.round(response.data.list[0].main.temp_max);
-  let lowTemp = Math.round(response.data.list[0].main.temp_min);
   let windSpeed = Math.round(response.data.list[0].wind.speed);
 
   currentTemp.innerHTML = `${temperature}`;
@@ -98,24 +104,64 @@ function findLocation(position) {
 
 function updateLocationDetails(response) {
   console.log(response.data);
-  let temperature = Math.round(response.data.main.temp);
-  let feelsLike = Math.round(response.data.main.feels_like);
+  celsiusTemperature = response.data.main.temp;
+  celsiusTempMax = response.data.main.temp_max;
+  celsiusTempMin = response.data.main.temp_min;
+  celsiusFeelsLike = response.data.main.feels_like;
+  let temperature = Math.round(celsiusTemperature);
+  let feelsLike = Math.round(celsiusFeelsLike);
+  let temperatureMax = Math.round(celsiusTempMax);
+  let temperatureMin = Math.round(celsiusTempMin);
   let locationName = response.data.name;
   let country = response.data.sys.country;
   let humidity = response.data.main.humidity;
   let description = response.data.weather[0].main;
-  currentTemp.innerHTML = `${temperature}ºC`;
-  feels.innerHTML = `feels like ${feelsLike}ºC`;
+  currentTemp.innerHTML = `${temperature}`;
+  maxTemp.innerHTML = `${temperatureMax}`;
+  minTemp.innerHTML = `${temperatureMin}`;
+  feels.innerHTML = `feels like ${feelsLike}`;
   humid.innerHTML = `Humidity ${humidity}%`;
   condition.innerHTML = `${description}`;
   cityname.innerHTML = `${locationName}, ${country}`;
 }
 function convertToFarenheit(event) {
   event.preventDefault();
-  let farenheitTemp = (11 * 9) / 5 + 32;
+  let farenheitTemp = (celsiusTemperature * 9) / 5 + 32;
+  let farenheitMax = (celsiusTempMax * 9) / 5 + 32;
+  let farenheitMin = (celsiusTempMin * 9) / 5 + 32;
+  let farenheitFeelsLike = (celsiusFeelsLike * 9) / 5 + 32;
   let tempElement = document.querySelector("#current-temp");
+  let Maxtemp = document.querySelector("#today-high");
+  let MinTemp = document.querySelector("#today-low");
+  let feels = document.querySelector("#feels-like");
+
   tempElement.innerHTML = Math.round(farenheitTemp);
+  feels.innerHTML = `Feels Like:  ${Math.round(farenheitFeelsLike)}`;
+  Maxtemp.innerHTML = Math.round(farenheitMax);
+  MinTemp.innerHTML = Math.round(farenheitMin);
 }
+
+function convertToCelsius(event) {
+  event.preventDefault();
+  let tempElement = document.querySelector("#current-temp");
+
+  let Maxtemp = document.querySelector("#today-high");
+  let MinTemp = document.querySelector("#today-low");
+  let feels = document.querySelector("#feels-like");
+
+  tempElement.innerHTML = Math.round(celsiusTemperature);
+  feels.innerHTML = `Feels Like:  ${Math.round(celsiusFeelsLike)}`;
+  Maxtemp.innerHTML = Math.round(celsiusTempMax);
+  MinTemp.innerHTML = Math.round(celsiusTempMin);
+}
+
+let celsiusTemperature = null;
+let celsiusTempMax = null;
+let celsiusTempMin = null;
+let celsiusFeelsLike = null;
 
 let farenheitLink = document.querySelector("#farenheit-link");
 farenheitLink.addEventListener("click", convertToFarenheit);
+
+let celsiusLink = document.querySelector("#celsius-link");
+celsiusLink.addEventListener("click", convertToCelsius);
