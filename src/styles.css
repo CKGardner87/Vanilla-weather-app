@@ -40,6 +40,9 @@ button {
   background-color: #7dedbc;
   border: rgba(160, 159, 159, 0.308) 1px solid;
 }
+a {
+  text-decoration: none;
+}
 
 .wrapper {
   max-width: 500px;
@@ -132,4 +135,13 @@ button {
 
 #description {
   text-transform: capitalize;
+}
+
+.weatherApp .active {
+  color: black;
+  cursor: default;
+}
+
+.weatherApp .active:hover {
+  text-decoration: none;
 }

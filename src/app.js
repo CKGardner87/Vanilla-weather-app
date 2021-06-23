@@ -60,7 +60,7 @@ function showTemperature(response) {
   let tempFeels = Math.round(celsiusFeelsLike);
   let highTemp = Math.round(celsiusTempMax);
   let lowTemp = Math.round(celsiusTempMin);
-  let humidityLevel = response.data.list[0].main.humidiy;
+  let humidityLevel = response.data.list[0].main.humidity;
   let weatherDescrip = response.data.list[0].weather[0].description;
   let windSpeed = Math.round(response.data.list[0].wind.speed);
 
@@ -120,12 +120,14 @@ function updateLocationDetails(response) {
   maxTemp.innerHTML = `${temperatureMax}`;
   minTemp.innerHTML = `${temperatureMin}`;
   feels.innerHTML = `feels like ${feelsLike}`;
-  humid.innerHTML = `Humidity ${humidity}%`;
+  humid.innerHTML = `Humidity: ${humidity}%`;
   condition.innerHTML = `${description}`;
   cityname.innerHTML = `${locationName}, ${country}`;
 }
 function convertToFarenheit(event) {
   event.preventDefault();
+  celsiusLink.classList.remove("active");
+  farenheitLink.classList.add("active");
   let farenheitTemp = (celsiusTemperature * 9) / 5 + 32;
   let farenheitMax = (celsiusTempMax * 9) / 5 + 32;
   let farenheitMin = (celsiusTempMin * 9) / 5 + 32;
@@ -143,6 +145,8 @@ function convertToFarenheit(event) {
 
 function convertToCelsius(event) {
   event.preventDefault();
+  celsiusLink.classList.add("active");
+  farenheitLink.classList.remove("active");
   let tempElement = document.querySelector("#current-temp");
 
   let Maxtemp = document.querySelector("#today-high");
