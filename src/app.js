@@ -68,7 +68,6 @@ function displayForecast(response) {
 
   forecast.forEach(function (forecastDay, index) {
     if (index > 0 && index < 7) {
-      console.log(forecastDay);
       forecastHTML =
         forecastHTML +
         `<div class="col-2">
@@ -83,10 +82,10 @@ function displayForecast(response) {
             <div>
               <span class="forecast-temp-max"><strong>${Math.round(
                 forecastDay.temp.max
-              )}</strong> </span>|
+              )}º</strong> </span>|
               <span class="forecast-temp-min">${Math.round(
                 forecastDay.temp.min
-              )}</span>
+              )}º</span>
             </div>
         </div>`;
     }
@@ -179,48 +178,3 @@ function updateLocationDetails(response) {
   condition.innerHTML = `${description}`;
   cityname.innerHTML = `${locationName}, ${country}`;
 }
-function convertToFarenheit(event) {
-  event.preventDefault();
-  celsiusLink.classList.remove("active");
-  farenheitLink.classList.add("active");
-  let farenheitTemp = (celsiusTemperature * 9) / 5 + 32;
-  let farenheitMax = (celsiusTempMax * 9) / 5 + 32;
-  let farenheitMin = (celsiusTempMin * 9) / 5 + 32;
-  let farenheitFeelsLike = (celsiusFeelsLike * 9) / 5 + 32;
-  let tempElement = document.querySelector("#current-temp");
-  let Maxtemp = document.querySelector("#today-high");
-  let MinTemp = document.querySelector("#today-low");
-  let feels = document.querySelector("#feels-like");
-
-  tempElement.innerHTML = Math.round(farenheitTemp);
-  feels.innerHTML = `Feels Like:  ${Math.round(farenheitFeelsLike)}`;
-  Maxtemp.innerHTML = Math.round(farenheitMax);
-  MinTemp.innerHTML = Math.round(farenheitMin);
-}
-
-function convertToCelsius(event) {
-  event.preventDefault();
-  celsiusLink.classList.add("active");
-  farenheitLink.classList.remove("active");
-  let tempElement = document.querySelector("#current-temp");
-
-  let Maxtemp = document.querySelector("#today-high");
-  let MinTemp = document.querySelector("#today-low");
-  let feels = document.querySelector("#feels-like");
-
-  tempElement.innerHTML = Math.round(celsiusTemperature);
-  feels.innerHTML = `Feels Like:  ${Math.round(celsiusFeelsLike)}`;
-  Maxtemp.innerHTML = Math.round(celsiusTempMax);
-  MinTemp.innerHTML = Math.round(celsiusTempMin);
-}
-
-let celsiusTemperature = null;
-let celsiusTempMax = null;
-let celsiusTempMin = null;
-let celsiusFeelsLike = null;
-
-let farenheitLink = document.querySelector("#farenheit-link");
-farenheitLink.addEventListener("click", convertToFarenheit);
-
-let celsiusLink = document.querySelector("#celsius-link");
-celsiusLink.addEventListener("click", convertToCelsius);
