@@ -45,6 +45,104 @@ let city = "Poole";
 let apiUrl = `${apiEndpoint}find?q=${city}&units=${units}&appid=${apiKey}`;
 console.log(apiUrl);
 
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+  let forecastHTML = `<div class = "row">`;
+
+  forecastHTML =
+    forecastHTML +
+    `<div class="col-2">
+             <img
+          src="http://openweathermap.org/img/wn/50d@2x.png"
+          alt=""
+          width="42"
+        />
+            <div class="forecast-date">Monday</div>
+            <div>
+              <span class="forecast-temp-max"><strong>20</strong> </span>|
+              <span class="forecast-temp-min">12 </span>
+            </div>
+        </div>
+        </div>`;
+  forecastHTML =
+    forecastHTML +
+    `<div class="col-2">
+             <img
+          src="http://openweathermap.org/img/wn/50d@2x.png"
+          alt=""
+          width="42"
+        />
+            <div class="forecast-date">Monday</div>
+            <div>
+              <span class="forecast-temp-max"><strong>20</strong> </span>|
+              <span class="forecast-temp-min">12 </span>
+            </div>
+          
+        </div>`;
+  forecastHTML =
+    forecastHTML +
+    `<div class="col-2">
+             <img
+          src="http://openweathermap.org/img/wn/50d@2x.png"
+          alt=""
+          width="42"
+        />
+            <div class="forecast-date">Monday</div>
+            <div>
+              <span class="forecast-temp-max"><strong>20</strong> </span>|
+              <span class="forecast-temp-min">12 </span>
+            </div>
+          
+        </div>`;
+  forecastHTML =
+    forecastHTML +
+    `<div class="col-2">
+             <img
+          src="http://openweathermap.org/img/wn/50d@2x.png"
+          alt=""
+          width="42"
+        />
+            <div class="forecast-date">Monday</div>
+            <div>
+              <span class="forecast-temp-max"><strong>20</strong> </span>|
+              <span class="forecast-temp-min">12 </span>
+            </div>
+          
+        </div>`;
+  forecastHTML =
+    forecastHTML +
+    `<div class="col-2">
+             <img
+          src="http://openweathermap.org/img/wn/50d@2x.png"
+          alt=""
+          width="42"
+        />
+            <div class="forecast-date">Monday</div>
+            <div>
+              <span class="forecast-temp-max"><strong>20</strong> </span>|
+              <span class="forecast-temp-min">12 </span>
+            </div>
+          
+        </div>`;
+  forecastHTML =
+    forecastHTML +
+    `<div class="col-2">
+             <img
+          src="http://openweathermap.org/img/wn/50d@2x.png"
+          alt=""
+          width="42"
+        />
+            <div class="forecast-date">Monday</div>
+            <div>
+              <span class="forecast-temp-max"><strong>20</strong> </span>|
+              <span class="forecast-temp-min">12 </span>
+            </div>
+          
+        </div>`;
+
+  forecastElement.innerHTML = forecastHTML + `</div>`;
+}
+
 axios.get(apiUrl).then(showTemperature);
 function showTemperature(response) {
   let locationName = response.data.list[0].name;
@@ -68,7 +166,7 @@ function showTemperature(response) {
   humid.innerHTML = `Humidity: ${humidityLevel}%`;
   maxTemp.innerHTML = `${highTemp}`;
   minTemp.innerHTML = `${lowTemp}`;
-  wind.innerHTML = `${windSpeed}km/h`;
+  wind.innerHTML = `Windspeed: ${windSpeed}km/h`;
   cityname.innerHTML = `${locationName}, ${country}`;
   currentCondition.innerHTML = `Currently: ${weatherDescrip}`;
   console.log(cityname);
@@ -167,3 +265,5 @@ farenheitLink.addEventListener("click", convertToFarenheit);
 
 let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", convertToCelsius);
+
+displayForecast();
