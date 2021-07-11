@@ -45,10 +45,11 @@ let city = "Poole";
 let apiUrl = `${apiEndpoint}find?q=${city}&units=${units}&appid=${apiKey}`;
 console.log(apiUrl);
 
-function displayForecast() {
-  let forecastElement = document.querySelector("#forecast");
-  let forecastHTML = `<div class = "row">`;
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
   let days = [
+    "Sunday",
     "Monday",
     "Tuesday",
     "Wednesday",
@@ -56,26 +57,50 @@ function displayForecast() {
     "Friday",
     "Saturday",
   ];
-  days.forEach(function (day) {
-    forecastHTML =
-      forecastHTML +
-      `<div class="col-2">
+
+  return days[day];
+}
+
+function displayForecast(response) {
+  let forecast = response.data.daily;
+  let forecastElement = document.querySelector("#forecast");
+  let forecastHTML = `<div class = "row">`;
+
+  forecast.forEach(function (forecastDay, index) {
+    if (index > 0 && index < 7) {
+      console.log(forecastDay);
+      forecastHTML =
+        forecastHTML +
+        `<div class="col-2">
              <img
-          src="http://openweathermap.org/img/wn/50d@2x.png"
+          src="http://openweathermap.org/img/wn/${
+            forecastDay.weather[0].icon
+          }@2x.png"
           alt=""
           width="42"
         />
-            <div class="forecast-date">${day}</div>
+            <div class="forecast-date">${formatDay(forecastDay.dt)}</div>
             <div>
-              <span class="forecast-temp-max"><strong>20</strong> </span>|
-              <span class="forecast-temp-min">12 </span>
+              <span class="forecast-temp-max"><strong>${Math.round(
+                forecastDay.temp.max
+              )}</strong> </span>|
+              <span class="forecast-temp-min">${Math.round(
+                forecastDay.temp.min
+              )}</span>
             </div>
         </div>`;
+    }
   });
 
   forecastElement.innerHTML = forecastHTML + `</div>`;
 }
 
+function getForecast(coordinates) {
+  console.log(coordinates);
+  let apiURL = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&exclude=hourly,minutely,alerts&appid=${apiKey}&units=${units}`;
+  console.log(apiURL);
+  axios.get(apiURL).then(displayForecast);
+}
 axios.get(apiUrl).then(showTemperature);
 function showTemperature(response) {
   let locationName = response.data.list[0].name;
@@ -102,7 +127,8 @@ function showTemperature(response) {
   wind.innerHTML = `Windspeed: ${windSpeed}km/h`;
   cityname.innerHTML = `${locationName}, ${country}`;
   currentCondition.innerHTML = `Currently: ${weatherDescrip}`;
-  console.log(cityname);
+
+  getForecast(response.data.list[0].coord);
 }
 
 let form = document.querySelector("#search-form");
@@ -198,5 +224,3 @@ farenheitLink.addEventListener("click", convertToFarenheit);
 
 let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", convertToCelsius);
-
-displayForecast();
