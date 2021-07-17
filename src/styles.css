@@ -81,6 +81,7 @@ a {
 .clearfix {
   height: 100px;
 }
+
 #weather-icon {
   padding-top: 8px;
   position: relative;
@@ -90,9 +91,11 @@ a {
 
 .conditions .additional-elements {
   font-size: 16px;
+  width: 130px;
 }
 .temp-element {
   font-weight: bold;
+  width: 130px;
 }
 
 .forecast-icon {

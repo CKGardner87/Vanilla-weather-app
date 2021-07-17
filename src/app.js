@@ -36,14 +36,12 @@ let feels = document.querySelector("#feels-like");
 let minTemp = document.querySelector("#today-low");
 let maxTemp = document.querySelector("#today-high");
 let wind = document.querySelector("#wind-speed");
-
 let cityname = document.querySelector("h1");
 let apiKey = "9b9238de779b229d195c2b6f0ba8b479";
 let apiEndpoint = `https://api.openweathermap.org/data/2.5/`;
 let units = "Metric";
 let city = "Poole";
 let apiUrl = `${apiEndpoint}find?q=${city}&units=${units}&appid=${apiKey}`;
-console.log(apiUrl);
 
 function formatDay(timestamp) {
   let date = new Date(timestamp * 1000);
@@ -82,10 +80,10 @@ function displayForecast(response) {
             <div>
               <span class="forecast-temp-max"><strong>${Math.round(
                 forecastDay.temp.max
-              )}º</strong> </span>|
+              )}˚</strong> </span>|
               <span class="forecast-temp-min">${Math.round(
                 forecastDay.temp.min
-              )}º</span>
+              )}˚</span>
             </div>
         </div>`;
     }
@@ -95,14 +93,12 @@ function displayForecast(response) {
 }
 
 function getForecast(coordinates) {
-  console.log(coordinates);
   let apiURL = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&exclude=hourly,minutely,alerts&appid=${apiKey}&units=${units}`;
-  console.log(apiURL);
+
   axios.get(apiURL).then(displayForecast);
 }
 axios.get(apiUrl).then(showTemperature);
 function showTemperature(response) {
-  console.log(response.data);
   let iconElement = document.querySelector("#weather-icon");
   let locationName = response.data.list[0].name;
   let country = response.data.list[0].sys.country;
@@ -121,10 +117,10 @@ function showTemperature(response) {
   let windSpeed = Math.round(response.data.list[0].wind.speed);
 
   currentTemp.innerHTML = `${temperature}`;
-  feels.innerHTML = `Feels like: ${tempFeels}`;
+  feels.innerHTML = `Feels like: ${tempFeels}˚`;
   humid.innerHTML = `Humidity: ${humidityLevel}%`;
-  maxTemp.innerHTML = `${highTemp}`;
-  minTemp.innerHTML = `${lowTemp}`;
+  maxTemp.innerHTML = `${highTemp}˚`;
+  minTemp.innerHTML = `${lowTemp}˚`;
   wind.innerHTML = `Windspeed: ${windSpeed}km/h`;
   cityname.innerHTML = `${locationName}, ${country}`;
   currentCondition.innerHTML = `Currently: ${weatherDescrip}`;
@@ -162,6 +158,8 @@ function findLocation(position) {
   units = "Metric";
   let apiAddress = `${apiEndpoint}weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=${units}`;
   axios.get(apiAddress).then(updateLocationDetails);
+  let forecastApiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&exclude=hourly,minutely,alerts&appid=${apiKey}&units=${units}`;
+  axios.get(forecastApiUrl).then(displayForecast);
 }
 
 function updateLocationDetails(response) {
@@ -169,6 +167,7 @@ function updateLocationDetails(response) {
   celsiusTempMax = response.data.main.temp_max;
   celsiusTempMin = response.data.main.temp_min;
   celsiusFeelsLike = response.data.main.feels_like;
+  let iconElement = document.querySelector("#weather-icon");
   let temperature = Math.round(celsiusTemperature);
   let feelsLike = Math.round(celsiusFeelsLike);
   let temperatureMax = Math.round(celsiusTempMax);
@@ -180,8 +179,13 @@ function updateLocationDetails(response) {
   currentTemp.innerHTML = `${temperature}`;
   maxTemp.innerHTML = `${temperatureMax}`;
   minTemp.innerHTML = `${temperatureMin}`;
-  feels.innerHTML = `feels like ${feelsLike}`;
+  feels.innerHTML = `Feels like: ${feelsLike}`;
   humid.innerHTML = `Humidity: ${humidity}%`;
-  condition.innerHTML = `${description}`;
+  condition.innerHTML = `Currently: ${description}`;
   cityname.innerHTML = `${locationName}, ${country}`;
+  iconElement.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+  iconElement.setAttribute("alt", response.data.weather[0].description);
 }
