@@ -9,7 +9,7 @@ body {
 
 ul,
 h1 {
-  padding: 5px;
+  padding: 10px;
 }
 
 h1 {
@@ -78,23 +78,16 @@ a {
   top: -35px;
 }
 
-.condition-icon {
-  font-size: 74px;
-  padding: 8px;
+.clearfix {
+  height: 100px;
+}
+#weather-icon {
+  padding-top: 8px;
   position: relative;
+  top: -24px;
+  width: 120px;
 }
-.sun-icon {
-  color: #f5cb0e;
-}
-.cloudy-sun-icon {
-  color: #9facaf;
-}
-.cloud-icon {
-  color: #eff9fc;
-}
-.rain-icon {
-  color: #3a616b;
-}
+
 .conditions .additional-elements {
   font-size: 16px;
 }
@@ -108,7 +101,7 @@ a {
 
 #forecast {
   text-align: center;
-  padding-top: 16px;
+  padding-bottom: 30px;
 }
 
 #search-form {
@@ -120,28 +113,33 @@ a {
   margin-right: 6px;
   background-color: rgba(125, 213, 253, 0.685);
   border-radius: 8px;
+  transition: all, ease-in-out, 120ms;
 }
 
+#city-search:hover {
+  background-color: rgba(75, 175, 221, 0.575);
+}
 #submit-button {
   border-radius: 15px;
   border: rgba(160, 159, 159, 0.308) 1px solid;
   background-color: rgb(125, 213, 253);
   font-size: 14px;
+  transition: ease-in-out, all, 120ms;
+}
+
+#submit-button:hover {
+  color: rgb(163, 82, 240);
 }
 
 .search-marker {
   font-size: 18px;
+  transition: all, ease-in-out, 120ms;
+}
+
+.search-marker:hover {
+  color: rgba(23, 64, 197, 0.842);
 }
 
 #description {
   text-transform: capitalize;
-}
-
-.weatherApp .active {
-  color: black;
-  cursor: default;
-}
-
-.weatherApp .active:hover {
-  text-decoration: none;
 }

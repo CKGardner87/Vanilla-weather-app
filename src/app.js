@@ -36,7 +36,7 @@ let feels = document.querySelector("#feels-like");
 let minTemp = document.querySelector("#today-low");
 let maxTemp = document.querySelector("#today-high");
 let wind = document.querySelector("#wind-speed");
-let iconElement = document.querySelector("condition-icon");
+
 let cityname = document.querySelector("h1");
 let apiKey = "9b9238de779b229d195c2b6f0ba8b479";
 let apiEndpoint = `https://api.openweathermap.org/data/2.5/`;
@@ -102,6 +102,8 @@ function getForecast(coordinates) {
 }
 axios.get(apiUrl).then(showTemperature);
 function showTemperature(response) {
+  console.log(response.data);
+  let iconElement = document.querySelector("#weather-icon");
   let locationName = response.data.list[0].name;
   let country = response.data.list[0].sys.country;
 
@@ -126,6 +128,11 @@ function showTemperature(response) {
   wind.innerHTML = `Windspeed: ${windSpeed}km/h`;
   cityname.innerHTML = `${locationName}, ${country}`;
   currentCondition.innerHTML = `Currently: ${weatherDescrip}`;
+  iconElement.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.list[0].weather[0].icon}@2x.png`
+  );
+  iconElement.setAttribute("alt", response.data.list[0].weather[0].description);
 
   getForecast(response.data.list[0].coord);
 }
